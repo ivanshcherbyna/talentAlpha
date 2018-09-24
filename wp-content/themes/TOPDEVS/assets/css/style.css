@@ -1,0 +1,12 @@
+#request_for_proposal-content-form-item-description{
+    height: 48px;
+}
+input.wpcf7-form-control.wpcf7-submit.content-button {
+    padding: 0;
+}
+.request_for_proposal-content-form-item-upload-btn {
+    display: flex;
+}
+.contacts-content-info-text {
+    margin-bottom: 25px;
+}

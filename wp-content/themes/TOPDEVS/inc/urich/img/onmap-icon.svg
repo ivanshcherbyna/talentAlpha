@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="26px" height="46px" viewBox="0 0 26 46" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>65BA9469-87FC-4B73-908F-B803EBB108C8</title>
+    <desc>Created with sketchtool.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="TD-Contacts" transform="translate(-466.000000, -712.000000)">
+            <g id="onmap-icon" transform="translate(466.000000, 712.000000)">
+                <path d="M13,45.2745313 C21.6666667,28.5446449 26,17.7864678 26,13 C26,5.82029825 20.1797017,0 13,0 C5.82029825,0 0,5.82029825 0,13 C0,17.7864678 4.33333333,28.5446449 13,45.2745313 Z" id="Oval-5" fill="#1599E5"></path>
+                <text id="TD" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" fill="#FFFFFF">
+                    <tspan x="4.674" y="20">TD</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>
