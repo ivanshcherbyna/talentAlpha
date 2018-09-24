@@ -331,8 +331,10 @@ function get_my_services($category_slug, $numbers=-1)
             $services ='';
             if(get_post_meta($post->ID, 'post-service-type') && is_array(get_post_meta($post->ID, 'post-service-type'))) {
                $services = get_post_meta($post->ID, 'post-service-type');
+
                if(count($services[0])>1)
                    $services = implode(" " , $services[0]);
+               elseif (is_string($services)) return $services;
                else $services = implode(" " , $services);
             }
             ?>
