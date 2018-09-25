@@ -322,7 +322,13 @@ function get_my_services($category_slug, $numbers=-1)
             setup_postdata($post);
             $title = get_the_title($post);
             $technology = redux_post_meta(THEME_OPT,$post,'post-works-technology');
-            $technology = substr($technology,0,52).'...';
+            $technology =  sanitize_text_field($technology);
+
+            if(strlen($technology)>52){
+                substr($technology,0,52);
+                 $technology .='...';
+            }
+            //$technology = substr($technology,0,52).'...';
             //$desc2 = substr($desc,0,20);
             $link =get_permalink($post->ID);
             $image = get_the_post_thumbnail_url($post,'full');
@@ -342,8 +348,8 @@ function get_my_services($category_slug, $numbers=-1)
             <a href='<?= $link?>' class="latest_works-content-item" data-category="<?= $type?>" style="background: linear-gradient(196deg, <?=$gradient['from']?>,<?=$gradient['to']?>)" data-metavalue="<?= $services?>">
                 <h4 class="latest_works-content-item-header"><?= $title?></h4>
                 <p class="latest_works-content-item-text">
-                    <span class="latest_works-content-item-text-info"><?= $technology?></span>
-                    <!--                <span class="latest_works-content-item-text-info">Native Objective C,  </span>-->
+                    <span class="latest_works-content-item-text-info"><?=  $technology?></span>
+
                 </p>
                 <!--            <p class="latest_works-content-item-text">-->
                 <!--                <span class="latest_works-content-item-text-info">Custom Keyboard, </span>-->
