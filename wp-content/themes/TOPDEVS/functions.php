@@ -43,14 +43,14 @@ function topdevs_footer_scripts()
 {
     if ($GLOBALS['pagenow'] != 'wp-login.php' && !is_admin()) {
 
-        wp_register_script('common', get_template_directory_uri() . '/inc/urich/common.js', array('jquery'), '1.0.0',true); // Custom scripts
-        wp_enqueue_script('common');
+        wp_register_script('my_common', get_template_directory_uri() . '/inc/urich/js/common.js', array('jquery'), '1.0.0',true); // Custom scripts
+        wp_enqueue_script('my_common');
         wp_register_script('scripts', get_template_directory_uri() . '/inc/urich/js/scripts.min.js', array('jquery'), '1.0.0',true); // Custom scripts
-        wp_enqueue_script('scripts');
+//        wp_enqueue_script('scripts');
 //        wp_register_script('jquery-isotope', get_template_directory_uri() . '/inc/urich/js/jquery-isotope.js', array('jquery'), '3.0',true); // Custom scripts
 //        wp_enqueue_script('jquery-isotope');
-        wp_register_script('async_script',get_template_directory_uri().'/inc/urich/js/async_ajax.js',array('jquery'), '1.0.0',true);
-        wp_enqueue_script('async_script');
+//        wp_register_script('async_script',get_template_directory_uri().'/inc/urich/js/async_ajax.js',array('jquery'), '1.0.0',true);
+//        wp_enqueue_script('async_script');
 
     }
 }
@@ -328,33 +328,28 @@ function get_my_services($category_slug, $numbers=-1)
                 substr($technology,0,52);
                  $technology .='...';
             }
-            //$technology = substr($technology,0,52).'...';
-            //$desc2 = substr($desc,0,20);
             $link =get_permalink($post->ID);
             $image = get_the_post_thumbnail_url($post,'full');
             $gradient = redux_post_meta(THEME_OPT, $post,'post-works-color-gradient');
             $type = redux_post_meta(THEME_OPT,$post,'post-works-type-select');
-            $services ='';
+
             if(get_post_meta($post->ID, 'post-service-type') && is_array(get_post_meta($post->ID, 'post-service-type'))) {
                $services = get_post_meta($post->ID, 'post-service-type');
 
-               if(count($services[0])>1)
-                   $services = implode(" " , $services[0]);
-               elseif (is_string($services)) return $services;
-               else $services = implode(" " , $services);
+               if(is_array($services[0]))
+                   $services_str = implode(" " , $services[0]);
+               else
+                   $services_str = $services[0];
             }
             ?>
 
-            <a href='<?= $link?>' class="latest_works-content-item" data-category="<?= $type?>" style="background: linear-gradient(196deg, <?=$gradient['from']?>,<?=$gradient['to']?>)" data-metavalue="<?= $services?>">
+            <a href='<?= $link?>' class="latest_works-content-item" data-category="<?= $type?>" style="background: linear-gradient(196deg, <?=$gradient['from']?>,<?=$gradient['to']?>)" data-metavalue="<?= $services_str?>">
                 <h4 class="latest_works-content-item-header"><?= $title?></h4>
                 <p class="latest_works-content-item-text">
                     <span class="latest_works-content-item-text-info"><?=  $technology?></span>
 
                 </p>
-                <!--            <p class="latest_works-content-item-text">-->
-                <!--                <span class="latest_works-content-item-text-info">Custom Keyboard, </span>-->
-                <!--                <span class="latest_works-content-item-text-info">Custom UI, </span>-->
-                <!--            </p>-->
+
                 <div class="latest_works-content-item-img">
                     <img class="latest_works-content-item-img-mockup" src="<?= $image?>" alt="#">
                 </div>
@@ -385,13 +380,13 @@ function get_my_works($category_slug, $number_pagination=6)
     );
 
     $pagination =  $number_pagination; //if set current pagination
-    $numberposts = empty($pagination)? 6: null; // if not set current pagination (show last 6 posts) for start page
+    $numberposts = empty($pagination)? -1: null; // if not set current pagination (show last 6 posts) for start page
 
     $args['include']=$pagination;
     $args['numberposts']=$numberposts;
     $posts = get_posts($args);
     echo '<input type="hidden" class="all-numbers-posts hidden" value="'.implode( "," ,$all_post_ids).'" data="'.get_permalink().'"/>';
-    echo '<div class="latest_works-content portfolio">';
+    echo '<div class="latest_works-content portfolio" id="works-content">';
         show_post_works_html($posts);
     echo '</div>';
     wp_reset_postdata();
