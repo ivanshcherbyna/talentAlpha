@@ -6,8 +6,13 @@
 ?>
 <?php get_header();
 global $mytheme, $post;
-//$offers = $mytheme['offer-sections'];
-//$posts_services = new WP_Query( array( 'category_name' => 'services' ,'post_status' => 'published') );
+$posts_teams = get_posts( array(
+        'orderby' => 'date',
+        'order' => 'DESC',
+        'numberposts' => -1,
+        'post_status' => 'publish',
+        'post_type' => array('post'),
+));
 //$posts_latest_works = new WP_Query( array( 'category_name' => 'latest-works' ,'post_status' => 'published') );
 //first section variable
 $head = redux_post_meta(THEME_OPT, $post->ID, 'head-first-string-text');
@@ -47,6 +52,45 @@ $fourImage2 = redux_post_meta(THEME_OPT, $post->ID, 'four-step-image-two');
 $fourImage3 = redux_post_meta(THEME_OPT, $post->ID, 'four-step-image-three');
 $fourLink = redux_post_meta(THEME_OPT, $post->ID, 'four-step-link');
 
+//four section variable
+$fourSectionHead = redux_post_meta(THEME_OPT, $post->ID, 'four-part-head-text');
+$fourSectionRepeater = redux_post_meta(THEME_OPT, $post->ID, 'section-four-repeater-items');
+
+//fifth section variable
+$fiveHead= redux_post_meta(THEME_OPT, $post->ID, 'five-part-head-text');
+
+$fiveHeadLeft = redux_post_meta(THEME_OPT, $post->ID, 'five-left-head');
+$fiveimgLeft = redux_post_meta(THEME_OPT, $post->ID, 'five-left-img');
+$fivelistLeft = redux_post_meta(THEME_OPT, $post->ID, 'five-left-list');
+$fivebuttonTextLeft = redux_post_meta(THEME_OPT, $post->ID, 'five-left-button-text');
+$fivebuttonLinkLeft = redux_post_meta(THEME_OPT, $post->ID, 'five-left-button-link');
+
+$fiveimgRight = redux_post_meta(THEME_OPT, $post->ID, 'five-right-img');
+$fiveHeadRight = redux_post_meta(THEME_OPT, $post->ID, 'five-right-head');
+$fivelistRight = redux_post_meta(THEME_OPT, $post->ID, 'five-right-list');
+$fivebuttonTextRight = redux_post_meta(THEME_OPT, $post->ID, 'five-right-button-text');
+$fivebuttonLinkRight = redux_post_meta(THEME_OPT, $post->ID, 'five-right-button-link');
+
+//six section variable
+$sixthHead= redux_post_meta(THEME_OPT, $post->ID, 'sixth-part-head-text');
+
+$founderFirstName = redux_post_meta(THEME_OPT, $post->ID, 'team-founder1-name');
+$founderFirstPhoto = redux_post_meta(THEME_OPT, $post->ID, 'team-founder1-img');
+$founderFirstLink = redux_post_meta(THEME_OPT, $post->ID, 'team-founder1-link');
+
+$founderSecondName = redux_post_meta(THEME_OPT, $post->ID, 'team-founder2-name');
+$founderSecondPhoto = redux_post_meta(THEME_OPT, $post->ID, 'team-founder2-img');
+$founderSecondLink = redux_post_meta(THEME_OPT, $post->ID, 'team-founder2-link');
+
+$founderThirdName = redux_post_meta(THEME_OPT, $post->ID, 'team-founder3-name');
+$founderThirdPhoto = redux_post_meta(THEME_OPT, $post->ID, 'team-founder3-img');
+$founderThirdLink = redux_post_meta(THEME_OPT, $post->ID, 'team-founder3-link');
+//PLATFORM TEAM
+$platformTeamHeadText = redux_post_meta(THEME_OPT, $post->ID, 'team-platform-head');
+$platformTeamList = redux_post_meta(THEME_OPT, $post->ID, 'team-repeater-items');
+//ADVISORS
+$advisorsHeadText = redux_post_meta(THEME_OPT, $post->ID, 'advisors-head');
+$advisorsList = redux_post_meta(THEME_OPT, $post->ID, 'advisors-repeater-items');
 
 ?>
 <div class="wrapper">
@@ -138,144 +182,99 @@ $fourLink = redux_post_meta(THEME_OPT, $post->ID, 'four-step-link');
     <section class="info">
         <h1>Why we are doing this</h1>
         <div class="info-list">
-            <a class="info-list-item">
+            <? if($fourSectionRepeater): foreach ($fourSectionRepeater as $block): ?>
+            <a class="info-list-item" href="<?= $block['info-list-item-link'] ?>">
                 <div class='info-list-item-wrap'>
                     <div class="info-list-item-img"></div>
-                    <h4 class='info-list-item-header'>Economic Opportunity</h4>
-                    <p class='info-list-item-text'>Redefining the way technology professionals engage with projects</p>
+                    <h4 class='info-list-item-header'><?= $block['info-list-item-header'] ?> </h4>
+                    <p class='info-list-item-text'><?= $block['info-list-item-text'] ?></p>
                 </div>
             </a>
-            <a class="info-list-item">
-                <div class='info-list-item-wrap'>
-                    <div class="info-list-item-img"></div>
-                    <h4 class='info-list-item-header'>Project engagment</h4>
-                    <p class='info-list-item-text'>Redefining the way technology professionals engage with projects</p>
-                </div>
-            </a>
-            <a class="info-list-item">
-                <div class='info-list-item-wrap'>
-                    <div class="info-list-item-img"></div>
-                    <h4 class='info-list-item-header'>Personal data control</h4>
-                    <p class='info-list-item-text'>Redefining the way technology professionals engage with projects</p>
-                </div>
-            </a>
-            <a class="info-list-item">
-                <div class='info-list-item-wrap'>
-                    <div class="info-list-item-img"></div>
-                    <h4 class='info-list-item-header'>Disrupting traditional vendors</h4>
-                    <p class='info-list-item-text'>Redefining the way technology professionals engage with projects</p>
-                </div>
-            </a>
-            <a class="info-list-item">
-                <div class='info-list-item-wrap'>
-                    <div class="info-list-item-img"></div>
-                    <h4 class='info-list-item-header'>Stop wasting client and tech time</h4>
-                    <p class='info-list-item-text'>Redefining the way technology professionals engage with projects</p>
-                </div>
-            </a>
+            <? endforeach; endif; ?>
         </div>
     </section>
 </div>
 <div class="wrap-section">
     <section class="early_adopters">
-        <h2>Early adopters</h2>
+        <h2><?= $fiveHead ?></h2>
         <div class="early_adopters-list">
             <div class="early_adopters-list-item">
-                <img src="img/pero-hover.svg" alt="#">
-                <h4 class="early_adopters-list-item-header">Enterprises</h4>
+                <img src="<?= get_template_directory_uri().'/inc/urich/img/pero-hover.svg' ?>" alt="#">
+                <h4 class="early_adopters-list-item-header"><?= $fiveHeadRight?></h4>
                 <ul class="early_adopters-list-item-content">
+                    <? if (is_array($fivelistRight)): foreach ($fivelistRight as $item): ?>
                     <li class="early_adopters-list-item-content-text">
-                        <p class="early_adopters-list-item-content-text-par">Select from thousands of pre-qualified software engineering
-                            teams</p>
+                        <p class="early_adopters-list-item-content-text-par"><?= $item ?></p>
                     </li>
-                    <li class="early_adopters-list-item-content-text">
-                        <p class="early_adopters-list-item-content-text-par">Remove hiring bias, and build the project team based on
-                            what matters to you</p>
-                    </li>
-                    <li class="early_adopters-list-item-content-text">
-                        <p class="early_adopters-list-item-content-text-par">Reduce time to hire</p>
-                    </li>
-                    <li class="early_adopters-list-item-content-text">
-                        <p class="early_adopters-list-item-content-text-par">Build virtual bench</p>
-                    </li>
+                    <? endforeach; endif; ?>
                 </ul>
-                <a href="" class="content-button">Schedule enterprise call</a>
+                <a href="<?= $fivebuttonLinkLeft ?>" class="content-button"><?= $fivebuttonTextLeft ?></a>
             </div>
             <div class="early_adopters-list-item">
-                <img src="img/pero-hover.svg" alt="#">
-                <h4 class="early_adopters-list-item-header">Software Houses</h4>
+                <img src="<?= get_template_directory_uri().'/inc/urich/img/pero-hover.svg' ?>" alt="#">
+                <h4 class="early_adopters-list-item-header"><?= $fiveHeadRight ?></h4>
                 <ul class="early_adopters-list-item-content">
-                    <li class="early_adopters-list-item-content-text">
-                        <p class="early_adopters-list-item-content-text-par">Select from thousands of pre-qualified software engineering
-                            teams</p>
-                    </li>
-                    <li class="early_adopters-list-item-content-text">
-                        <p class="early_adopters-list-item-content-text-par">Remove hiring bias, and build the project team based on
-                            what matters to you</p>
-                    </li>
-                    <li class="early_adopters-list-item-content-text">
-                        <p class="early_adopters-list-item-content-text-par">Reduce time to hire</p>
-                    </li>
-                    <li class="early_adopters-list-item-content-text">
-                        <p class="early_adopters-list-item-content-text-par">Build virtual bench</p>
-                    </li>
+                    <? if (is_array($fivelistRight)): foreach ($fivelistRight as $item): ?>
+                        <li class="early_adopters-list-item-content-text">
+                            <p class="early_adopters-list-item-content-text-par"><?= $item ?></p>
+                        </li>
+                    <? endforeach; endif; ?>
                 </ul>
-                <a href="" class="content-button">Schedule software house call</a>
+                <a href="<?= $fivebuttonLinkRight ?>" class="content-button"><?= $fivebuttonTextRight ?></a>
             </div>
         </div>
     </section>
     <section class="team">
-        <h2>Team</h2>
+        <h2><?= $sixthHead ?></h2>
         <h5 class="team-header">FOUNDERS</h5>
         <div class="team-founders">
             <div class="team-founders-item">
-                <h3 class="team-founders-item-name"><span>Przemek</span> <span>Berendt</span></h3>
+                <h3 class="team-founders-item-name"><?= $founderFirstName ?></h3>
                 <div class="team-founders-item-img">
-                    <img src="img/Ellipse.png" alt="">
-                    <a href='' class="team-founders-item-link"><img src="img/plus.png" alt="" class="team-founders-item-plus"></a>
+                    <img src="<?= $founderFirstPhoto['url'] ?>" alt="">
+                    <a href='<?= $founderFirstLink ?>' class="team-founders-item-link"><img src="<?= get_template_directory_uri().'/inc/urich/img/plus.png' ?>" alt="" class="team-founders-item-plus"></a>
                 </div>
 
             </div>
             <div class="team-founders-item">
+                <h3 class="team-founders-item-name"><?= $founderSecondName ?></h3>
                 <div class="team-founders-item-img">
-                    <img src="img/Mask Group.png" alt="">
-                    <a href='' class="team-founders-item-link"><img src="img/plus.png" alt="" class="team-founders-item-plus"></a>
+                    <img src="<?= $founderSecondPhoto['url'] ?>" alt="">
+                    <a href='<?= $founderSecondLink ?>' class="team-founders-item-link"><img src="<?= get_template_directory_uri().'/inc/urich/img/plus.png' ?>" alt="" class="team-founders-item-plus"></a>
                 </div>
-                <h3 class="team-founders-item-name"><span>Mike</span> <span>Kennedy</span></h3>
+
             </div>
             <div class="team-founders-item">
+                <h3 class="team-founders-item-name"><?= $founderThirdName ?></h3>
                 <div class="team-founders-item-img">
-                    <img src="img/Ellipse(1).png" alt="">
-                    <a href='' class="team-founders-item-link"><img src="img/plus.png" alt="" class="team-founders-item-plus"></a>
+                    <img src="<?= $founderThirdPhoto['url'] ?>" alt="">
+                    <a href='<?= $founderThirdLink ?>' class="team-founders-item-link"><img src="<?= get_template_directory_uri().'/inc/urich/img/plus.png' ?>" alt="" class="team-founders-item-plus"></a>
                 </div>
-                <h3 class="team-founders-item-name"><span>Szymon</span> <span>Niemczura</span></h3>
             </div>
         </div>
         <div class='team-content'>
             <div class='team-content-item'>
-                <h5 class="team-header">PLATFORM TEAM</h5>
+                <h5 class="team-header"><?= $platformTeamHeadText ?></h5>
                 <div class='team-content-item-about'>
-                    <!-- <div class='team-content-item-about-block'><div class='team-content-item-about-block-photo' style='background:url()'></div><span class='team-content-item-about-block-name'>Tomek</span></div> -->
+                    <? if ($platformTeamList): foreach ($platformTeamList as $item): ?>
                     <div class='team-content-item-about-block'>
-                        <div class='team-content-item-about-block-photo'></div><span class='team-content-item-about-block-name'>Tomek</span>
+                        <a href="<?= $item['team-item-link'] ?>">
+                        <div class='team-content-item-about-block-photo'></div><span class='team-content-item-about-block-name'><?= $item['team-item-name'] ?></span>
+                        </a>
                     </div>
-                    <div class='team-content-item-about-block'>
-                        <div class='team-content-item-about-block-photo'></div><span class='team-content-item-about-block-name'>Tomek</span>
-                    </div>
-                    <div class='team-content-item-about-block'>
-                        <div class='team-content-item-about-block-photo'></div><span class='team-content-item-about-block-name'>Marcel</span>
-                    </div>
+                    <? endforeach; endif; ?>
                 </div>
             </div>
             <div class='team-content-item'>
-                <h5 class="team-header">ADVISORS</h5>
+                <h5 class="team-header"><?= $advisorsHeadText ?></h5>
                 <div class='team-content-item-about'>
+                    <? if ($advisorsList): foreach ($advisorsList as $item): ?>
                     <div class='team-content-item-about-block'>
-                        <div class='team-content-item-about-block-photo'></div><span class='team-content-item-about-block-name'>Anna</span>
+                    <a href="<?= $item['advisors-item-link'] ?>">
+                        <div class='team-content-item-about-block-photo'></div><span class='team-content-item-about-block-name'><?= $item['advisors-item-name'] ?></span>
+                    </a>
                     </div>
-                    <div class='team-content-item-about-block'>
-                        <div class='team-content-item-about-block-photo'></div><span class='team-content-item-about-block-name'>Dariusz</span>
-                    </div>
+                    <? endforeach; endif; ?>
                 </div>
             </div>
         </div>
@@ -286,37 +285,25 @@ $fourLink = redux_post_meta(THEME_OPT, $post->ID, 'four-step-link');
         <div class='blog-header'>
             <h2>Blog</h2>
             <div>
-                <button type="button" class="prev"><img src="img/Vector.svg" alt=""> </button>
-                <button type="button" class="next"><img src="img/Vector.svg" alt=""> </button>
+                <button type="button" class="prev"><img src="<?= get_template_directory_uri().'/inc/urich/img/Vector.svg' ?>" alt=""> </button>
+                <button type="button" class="next"><img src="<?= get_template_directory_uri().'/inc/urich/img/Vector.svg' ?>" alt=""> </button>
             </div>
         </div>
         <div class="blog-list slick-slider">
+            <? if($posts_teams): foreach ($posts_teams as $post):
+                $image= get_the_post_thumbnail_url($post, 'medium');
+                $link = get_permalink($post->ID);
+                $title = get_the_title($post);
+                ?>
             <div class="blog-list-item">
-                <img class="blog-list-item-img" src="img/image.png" alt="">
-                <div class="blog-list-item-info"><span>Startup Diary</span><span>S01e01</span></div>
+                <img class="blog-list-item-img" src="<?= $image ?>" alt="">
+                <div class="blog-list-item-info"><span><?= $title ?></span></div>
             </div>
-            <div class="blog-list-item">
-                <img class="blog-list-item-img" src="img/image.png" alt="">
-                <div class="blog-list-item-info"><span>Startup Diary</span><span>S01e01</span></div>
-            </div>
-            <div class="blog-list-item">
-                <img class="blog-list-item-img" src="img/image.png" alt="">
-                <div class="blog-list-item-info"><span>Startup Diary</span><span>S01e01</span></div>
-            </div>
-            <div class="blog-list-item">
-                <img class="blog-list-item-img" src="img/image.png" alt="">
-                <div class="blog-list-item-info"><span>Startup Diary</span><span>S01e01</span></div>
-            </div>
-            <div class="blog-list-item">
-                <img class="blog-list-item-img" src="img/image.png" alt="">
-                <div class="blog-list-item-info"><span>Startup Diary</span><span>S01e01</span></div>
-            </div>
+            <? endforeach; endif; ?>
         </div>
 
     </div>
 </section>
-
         <div class="wrap-section">
             <? get_footer(); ?>
-
 
