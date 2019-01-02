@@ -44,15 +44,10 @@ function talent_alpha_scripts()
 
         wp_register_script('my_jquery', get_template_directory_uri() . '/inc/urich/js/jquery.min.js', array('jquery'), '3.3.1',true); // Custom scripts
         wp_enqueue_script('my_jquery');
-        wp_register_script('my_scripts', get_template_directory_uri() . '/inc/urich/js/scripts.min.js', array('jquery'), '1.0.0',true); // Custom scripts
-        wp_enqueue_script('scripts');
+        wp_register_script('my_scripts', get_template_directory_uri() . '/inc/urich/js/scripts.min.js', array('jquery'), '',true); // Custom scripts
+        wp_enqueue_script('my_scripts');
         wp_register_script('my_slick', get_template_directory_uri() . '/inc/urich/js/slick.js', array('jquery'), '1.0.0',true);
         wp_enqueue_script('my_slick');
-//        wp_register_script('jquery-isotope', get_template_directory_uri() . '/inc/urich/js/jquery-isotope.js', array('jquery'), '3.0',true); // Custom scripts
-//        wp_enqueue_script('jquery-isotope');
-//        wp_register_script('async_script',get_template_directory_uri().'/inc/urich/js/async_ajax.js',array('jquery'), '1.0.0',true);
-//        wp_enqueue_script('async_script');
-
     }
 }
 

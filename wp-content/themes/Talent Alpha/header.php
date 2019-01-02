@@ -23,7 +23,7 @@
                     <ul class='header-menu-list'>
                         <? foreach ($mytheme['menu-repeater-items'] as $menuItem): ?>
                         <li class='header-menu-list-item'><a class='header-menu-list-item-link' href="<?= $menuItem['menu-link'] ?>"><?= $menuItem['menu-title'] ?></a></li>
-                    <?php endforeach; ?>
+                    <? endforeach; ?>
                     </ul>
                     <? endif; ?>
                     <a href="<?= $mytheme['menu-content-button'] ;?>" class="content-button">Schedule a call</a>

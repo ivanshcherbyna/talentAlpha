@@ -106,15 +106,16 @@ $advisorsList = redux_post_meta(THEME_OPT, $post->ID, 'advisors-repeater-items')
         </div>
     </section>
 </div>
-<div class="vision-about">
+<div class="vision-about" id="vision">
     <div class="wrap-section">
         <div class="vision-about-info">
             <h2><?= $secondHead ?></h2>
             <?= $secondSectionString ?>
             <a href="<?= $secondScheduleLink ?>" class="content-button">Schedule a call </a>
         </div>
-        <div>
-
+        <div class="vision-about-img">
+            <img src="<?= get_template_directory_uri().'/inc/urich/img/vision.png' ?>" alt="#" class='vision-about-img-photo'>
+            <img src="<?= get_template_directory_uri().'/inc/urich/img/ta_logo.png' ?>" alt="#" class='vision-about-img-logo'>
         </div>
     </div>
 </div>
@@ -163,9 +164,9 @@ $advisorsList = redux_post_meta(THEME_OPT, $post->ID, 'advisors-repeater-items')
             <div class="vision-steps-item">
                 <div class="vision-steps-item-img">
                     <div class="vision-steps-item-img-step-ellipse"></div>
-                    <img src="<?= $fourImage1['url'] ?>" class="vision-steps-item-img-step1">
-                    <img src="<?= $fourImage2['url'] ?>" class="vision-steps-item-img-step1">
-                    <img src="<?= $fourImage2['url'] ?>" class="vision-steps-item-img-step1">
+                    <img src="<?= $fourImage1['url'] ?>" class="vision-steps-item-img-4a">
+                    <img src="<?= $fourImage2['url'] ?>" class="vision-steps-item-img-4b">
+                    <img src="<?= $fourImage3['url'] ?>" class="vision-steps-item-img-4c">
                 </div>
                 <div class="vision-steps-item-content">
                     <div class="vision-steps-item-content-num">4</div>
@@ -224,14 +225,14 @@ $advisorsList = redux_post_meta(THEME_OPT, $post->ID, 'advisors-repeater-items')
             </div>
         </div>
     </section>
-    <section class="team">
+    <section class="team" id="team">
         <h2><?= $sixthHead ?></h2>
         <h5 class="team-header">FOUNDERS</h5>
         <div class="team-founders">
             <div class="team-founders-item">
                 <h3 class="team-founders-item-name"><?= $founderFirstName ?></h3>
                 <div class="team-founders-item-img">
-                    <img src="<?= $founderFirstPhoto['url'] ?>" alt="">
+                    <img src="<?= $founderFirstPhoto['url'] ?>" alt="" class="team-founders-item-img-photo">
                     <a href='<?= $founderFirstLink ?>' class="team-founders-item-link"><img src="<?= get_template_directory_uri().'/inc/urich/img/plus.png' ?>" alt="" class="team-founders-item-plus"></a>
                 </div>
 
@@ -239,7 +240,7 @@ $advisorsList = redux_post_meta(THEME_OPT, $post->ID, 'advisors-repeater-items')
             <div class="team-founders-item">
                 <h3 class="team-founders-item-name"><?= $founderSecondName ?></h3>
                 <div class="team-founders-item-img">
-                    <img src="<?= $founderSecondPhoto['url'] ?>" alt="">
+                    <img src="<?= $founderSecondPhoto['url'] ?>" alt="" class="team-founders-item-img-photo">
                     <a href='<?= $founderSecondLink ?>' class="team-founders-item-link"><img src="<?= get_template_directory_uri().'/inc/urich/img/plus.png' ?>" alt="" class="team-founders-item-plus"></a>
                 </div>
 
@@ -247,7 +248,7 @@ $advisorsList = redux_post_meta(THEME_OPT, $post->ID, 'advisors-repeater-items')
             <div class="team-founders-item">
                 <h3 class="team-founders-item-name"><?= $founderThirdName ?></h3>
                 <div class="team-founders-item-img">
-                    <img src="<?= $founderThirdPhoto['url'] ?>" alt="">
+                    <img src="<?= $founderThirdPhoto['url'] ?>" alt="" class="team-founders-item-img-photo">
                     <a href='<?= $founderThirdLink ?>' class="team-founders-item-link"><img src="<?= get_template_directory_uri().'/inc/urich/img/plus.png' ?>" alt="" class="team-founders-item-plus"></a>
                 </div>
             </div>
@@ -280,7 +281,7 @@ $advisorsList = redux_post_meta(THEME_OPT, $post->ID, 'advisors-repeater-items')
         </div>
     </section>
 </div>
-<section class="blog">
+<section class="blog" id ='blog'>
     <div class="wrap-section">
         <div class='blog-header'>
             <h2>Blog</h2>
@@ -294,11 +295,14 @@ $advisorsList = redux_post_meta(THEME_OPT, $post->ID, 'advisors-repeater-items')
                 $image= get_the_post_thumbnail_url($post, 'medium');
                 $link = get_permalink($post->ID);
                 $title = get_the_title($post);
+                $link =get_permalink($post->ID);
                 ?>
-            <div class="blog-list-item">
-                <img class="blog-list-item-img" src="<?= $image ?>" alt="">
-                <div class="blog-list-item-info"><span><?= $title ?></span></div>
-            </div>
+
+                    <div class="blog-list-item">
+                        <a href='<?=$link?>' "><img class="blog-list-item-img" src="<?= $image ?>" alt=""></a>
+                        <div class="blog-list-item-info"><span><?= $title ?></span></div>
+                    </div>
+
             <? endforeach; endif; ?>
         </div>
 
