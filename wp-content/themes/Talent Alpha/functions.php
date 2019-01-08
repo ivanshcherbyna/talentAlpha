@@ -271,7 +271,7 @@ add_filter('show_admin_bar', 'remove_admin_bar'); // Remove Admin bar
 // Remove Filters
 remove_filter('the_excerpt', 'wpautop'); // Remove <p> tags from Excerpt altogether
 
-require_once "inc/post_types.php";
+//require_once "inc/post_types.php";
 require_once "inc/fix_core.php";
 
 include_once 'inc/loader.php';
