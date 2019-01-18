@@ -17,7 +17,9 @@
 
             <header class='wrapper'>
 <!--                <img class='header-logo' src="--><?// $mytheme['logo-header-img']['url']; ?><!--" alt="#">-->
-                <img class='header-logo' src="<?= get_template_directory_uri().'/inc/urich/img/logo.svg' ?>" alt="#">
+                <a href="<?php echo get_home_url() ?>">
+                    <img class='header-logo' src="<?= get_template_directory_uri().'/inc/urich/img/logo.svg' ?>" alt="#">
+                </a>
                 <div class='header-menu'>
                     <? if (!empty($mytheme['menu-repeater-items'])): ?>
                     <ul class='header-menu-list'>

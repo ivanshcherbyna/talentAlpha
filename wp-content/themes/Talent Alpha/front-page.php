@@ -295,7 +295,7 @@ $advisorsList = redux_post_meta(THEME_OPT, $post->ID, 'advisors-repeater-items')
                 $image= get_the_post_thumbnail_url($post, 'medium');
                 $link = get_permalink($post->ID);
                 $title = get_the_title($post);
-                $link =get_permalink($post->ID);
+
                 ?>
 
                     <div class="blog-list-item">

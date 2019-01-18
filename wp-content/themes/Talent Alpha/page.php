@@ -13,8 +13,6 @@
 
 			<?php the_content(); ?>
 
-			<?php comments_template( '', true ); // Remove if you don't want comments ?>
-
 		</article>
 		<!-- /article -->
 
@@ -25,7 +23,7 @@
 		<!-- article -->
 		<article>
 
-			<h2><?php _e( 'Sorry, nothing to display.', 'teatrhotel' ); ?></h2>
+			<h2><?php _e( 'Sorry, nothing to display.', THEME_OPT ); ?></h2>
 
 		</article>
 		<!-- /article -->
