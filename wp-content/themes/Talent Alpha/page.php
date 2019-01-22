@@ -3,11 +3,11 @@ global $mytheme
 ?>
     <div class="wrapper">
         <section class="banner ">
-            <h1><?php the_title(); ?></h1>
+            <h1 class="header"><?php the_title(); ?></h1>
         </section>
     </div>
 <section class="wrap-section privacy_policy ">
-    <!--<h2 class='privacy_policy-header'>Talent Alpha Privacy Policy</h2>-->
+    
     <div class='privacy_policy-content'>
         <?php
         while ( have_posts() ) :

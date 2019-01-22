@@ -1677,13 +1677,13 @@ header .header-menu-list-item-link {
   margin-top: 20px;
 }
 /*blog*/
-.blog {
+.blog-main {
   margin-top: 60px;
   padding: 50px 0 60px;
   background: #F8F8F8;
 }
 @media (max-width: 320px) {
-  .blog {
+  .blog-main {
     padding: 40px 0 30px;
   }
 }
@@ -1755,7 +1755,6 @@ header .header-menu-list-item-link {
   }
 }
 .banner-blog-input {
-  width: 90%;
   -webkit-border-radius: 77px;
           border-radius: 77px;
   background: url(../img/Search.png) #FFFFFF no-repeat;
@@ -1787,7 +1786,7 @@ header .header-menu-list-item-link {
 }
 @media (max-width: 991px) {
   .banner-blog-input {
-    width: 40%;
+    width: 80%;
   }
 }
 @media (max-width: 600px) {

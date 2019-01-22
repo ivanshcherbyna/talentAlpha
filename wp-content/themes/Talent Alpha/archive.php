@@ -35,6 +35,9 @@ $posts_teams = get_posts( array(
             </a>
 
         <?php endforeach; endif; ?>
+            <!-- add empty div -->
+            <div class="blog-page-list-item empty-block"></div>
+            <div class="blog-page-list-item empty-block"></div>
         </div>
     </div>
     <hr class="page-line">

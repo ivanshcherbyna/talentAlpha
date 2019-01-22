@@ -325,5 +325,19 @@ function get_posts_slider($posts_author_id = 1 , $per_page_num = -1){
 
 remove_action('wp_head', 'wp_generator');
 
+/*----- remove header incudes emojii --*/
+remove_action( 'wp_head', 'wp_resource_hints', 2 );
+// remove styles & scripts emoji
+remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+remove_action( 'wp_print_styles', 'print_emoji_styles' );
+
+// + remove meta generator и shrotl link
+remove_action( 'wp_head', 'wp_generator' );
+remove_action( 'wp_head', 'wp_shortlink_wp_head' );
+
+// remove links header
+remove_action( 'wp_head', 'wp_oembed_add_discovery_links' );
+remove_action( 'wp_head', 'wp_oembed_add_host_js' );
+/* -----/ ---*/
 
 ?>

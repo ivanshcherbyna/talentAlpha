@@ -16,7 +16,7 @@
 
 
 <header class='wrapper'>
-    <a href="http://talent-alpha.com/"><img class='header-logo' src="<?php echo get_template_directory_uri().'/inc/urich/img/logo.svg'; ?>" alt="#"></a>
+    <a href="<?php echo get_home_url() ?>"><img class='header-logo' src="<?php echo get_template_directory_uri().'/inc/urich/img/logo.svg'; ?>" alt="#"></a>
     <div class='header-menu'>
         <?php if (!empty($mytheme['menu-repeater-items'])){ ?>
             <ul class='header-menu-list'>

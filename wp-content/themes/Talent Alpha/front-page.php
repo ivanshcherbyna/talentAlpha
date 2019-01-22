@@ -95,7 +95,7 @@ $advisorsList = redux_post_meta(THEME_OPT, $post->ID, 'advisors-repeater-items')
 ?>
 <div class="wrapper">
     <section class="banner ">
-        <h1><?php echo $head ?></h1>
+        <h1 class = "header"><?php echo $head ?></h1>
         <p class='banner-content'><?php echo $secondString; ?></p>
         <div class='banner-bottom'>
             <span class='banner-bottom-text'>Join as an Early Adopter:</span>
@@ -109,7 +109,7 @@ $advisorsList = redux_post_meta(THEME_OPT, $post->ID, 'advisors-repeater-items')
 <div class="vision-about">
     <div class="wrap-section" id="vision">
         <div class="vision-about-info">
-            <h2><?php echo $secondHead; ?></h2>
+            <h2 class = "header" ><?php echo $secondHead; ?></h2>
             <?php echo $secondSectionString; ?>
             <a href="<?php echo $secondScheduleLink; ?>" class="content-button">Schedule a call </a>
         </div>
@@ -181,7 +181,7 @@ $advisorsList = redux_post_meta(THEME_OPT, $post->ID, 'advisors-repeater-items')
         </div>
     </section>
     <section class="info">
-        <h1>Why we are doing this?</h1>
+        <h1 class = "header">Why we are doing this?</h1>
         <div class="info-list">
             <?php if($fourSectionRepeater){ 
 					foreach ($fourSectionRepeater as $block){ ?>
@@ -200,7 +200,7 @@ $advisorsList = redux_post_meta(THEME_OPT, $post->ID, 'advisors-repeater-items')
 </div>
 <div class="wrap-section">
     <section class="early_adopters">
-        <h2><?php echo $fiveHead; ?></h2>
+        <h2 class = "header"><?php echo $fiveHead; ?></h2>
         <div class="early_adopters-list">
             <div class="early_adopters-list-item">
                 <img src="<?php echo get_template_directory_uri().'/inc/urich/img/pero-hover.svg'; ?>" alt="#">
@@ -230,7 +230,7 @@ $advisorsList = redux_post_meta(THEME_OPT, $post->ID, 'advisors-repeater-items')
         </div>
     </section>
     <section class="team" id="team">
-        <h2><?php echo $sixthHead; ?></h2>
+        <h2 class = "header"><?php echo $sixthHead; ?></h2>
         <h5 class="team-header">FOUNDERS</h5>
         <div class="team-founders">
             <div class="team-founders-item">

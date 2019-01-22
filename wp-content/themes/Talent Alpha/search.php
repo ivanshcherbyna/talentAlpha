@@ -27,8 +27,11 @@ $posts_teams = get_posts( array(
                     <div class="blog-page-list-item-img" style='background-image: url(<?php the_post_thumbnail_url('medium') ?>)'></div>
                     <div class="blog-page-list-item-info" ><?php the_title(); ?></div>
                 </a>
-            <?php endwhile;
-            else:?>
+            <?php endwhile; ?>
+            <!-- add empty div -->
+            <div class="blog-page-list-item empty-block"></div>
+            <div class="blog-page-list-item empty-block"></div>
+            <?php else:?>
                 <article>
 
                     <h2><?php _e( 'Sorry, nothing to display.', THEME_OPT ); ?></h2>
