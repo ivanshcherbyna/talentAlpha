@@ -1,22 +1,11 @@
 <?php get_header(); ?>
 
-	<main role="main" style="text-align: center;">
-		<!-- section -->
-		<section>
+<div class="wrapper">
+    <section class="banner banner-error">
+        <div class='banner-error-text'>404</div>
+        <p class="banner-content"><?php _e('A website you are looking for doesn’t exist', THEME_OPT) ?></p>
+        <a href="<?php echo home_url() ?>" class="content-button"><?php _e('Go to Home Page', THEME_OPT) ?></a>
+    </section>
+</div>
 
-			<!-- article -->
-			<article id="post-404">
-
-				<h1><?php _e( 'Page not found', THEME_OPT ); ?></h1>
-				<h2>
-					<a href="<?php echo home_url(); ?>"><?php _e( 'Return home?', THEME_OPT ); ?></a>
-				</h2>
-
-			</article>
-			<!-- /article -->
-
-		</section>
-		<!-- /section -->
-	</main>
-
-<?php get_footer(); ?>
+<?php get_footer('404'); ?>

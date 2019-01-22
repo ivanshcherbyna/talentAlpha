@@ -24,17 +24,17 @@ $posts_teams = get_posts( array(
     <div class="wrap-section">
         <div class="blog-page-list ">
 
-        <? if($posts_teams): foreach ($posts_teams as $post):
+        <?php if($posts_teams): foreach ($posts_teams as $post):
             $image= get_the_post_thumbnail_url($post, 'medium');
             $link = get_permalink($post->ID);
             $title = get_the_title($post);
             ?>
-            <div class="blog-page-list-item">
+            <a class="blog-page-list-item" href="<?php echo $link ?>">
                 <div class="blog-page-list-item-img" style='background-image: url(<?php echo $image ?>)'></div>
-                <a class="blog-page-list-item-info" href="<?php echo $link ?>"><?php echo $title ?></a>
-            </div>
+                    <div class="blog-page-list-item-info" ><?php echo $title ?></div>
+            </a>
 
-        <? endforeach; endif; ?>
+        <?php endforeach; endif; ?>
         </div>
     </div>
     <hr class="page-line">

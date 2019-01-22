@@ -15,7 +15,7 @@
         <div class="contacts-content-info">
         <h3 class='page-header'>ContactS</h3>
         <p class="contacts-content-info-text"><?= $mytheme['contact-top-text']?> </p>
-<!--            --><?//= do_shortcode('[contact-form-7 id="41" title="form contact-page"]')?>
+            <?= do_shortcode('[contact-form-7 id="41" title="form contact-page"]')?>
         </div>
     </div>
 </section>

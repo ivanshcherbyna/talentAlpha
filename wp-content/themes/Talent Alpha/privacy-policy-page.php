@@ -4,28 +4,41 @@
  *
  */
 ?>
-<?php get_header();
-global $mytheme
-?>
-    <div class="wrapper">
-        <section class="banner ">
-            <h1><?php the_title(); ?></h1>
-        </section>
-    </div>
-<section class="wrap-section privacy_policy ">
-    <h2 class='privacy_policy-header'>Talent Alpha Privacy Policy</h2>
-    <div class='privacy_policy-content'>
-        <?php
-        while ( have_posts() ) :
-            the_post();
+<?php get_header(); ?>
 
-            the_content();
+<!-- main content goes here -->
+<main role="main">
+	<!-- section -->
+	<section>
+		<div class="title"><h1><?php the_title(); ?></h1></div>
 
-        endwhile;
-        ?>
-    </div>
-    <hr class="privacy_policy-line">
-</section>
+	<?php if (have_posts()): while (have_posts()) : the_post(); ?>
 
-    <div class="wrap-section">
+		<!-- article -->
+		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+
+			<?php the_content(); ?>
+
+			<?php comments_template( '', true ); // Remove if you don't want comments ?>
+
+		</article>
+		<!-- /article -->
+
+	<?php endwhile; ?>
+
+	<?php else: ?>
+
+		<!-- article -->
+		<article>
+
+			<h2><?php _e( 'Sorry, nothing to display.', 'teatrhotel' ); ?></h2>
+
+		</article>
+		<!-- /article -->
+
+	<?php endif; ?>
+
+	</section>
+	<!-- /section -->
+</main>
 <?php get_footer(); ?>

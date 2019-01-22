@@ -67,26 +67,26 @@ function talent_alpha_styles() {
 
 
 // HTML5 Blank navigation
-function lwp_nav()
+function menu_nav()
 {
 	wp_nav_menu(
 	array(
-		'theme_location'  => 'header-menu',
-		'menu'            => '',
-		'container'       => '',
-		'container_class' => 'wrapper',
-		'container_id'    => 'main-menu',
-		'menu_class'      => 'menu',
-		'menu_id'         => '',
-		'echo'            => true,
-		'fallback_cb'     => 'wp_page_menu',
-		'before'          => '',
-		'after'           => '',
-		'link_before'     => '',
-		'link_after'      => '',
-		'items_wrap'      => '<ul class="header-list">%3$s</ul>',
-		'depth'           => 0,
-		'walker'          => ''
+        'theme_location'  => 'header-menu',
+        'menu'            => '',
+        'container'       => '',
+        'container_class' => 'header-menu-list',
+        'container_id'    => '',
+        'menu_class'      => 'menu',
+        'menu_id'         => '',
+        'echo'            => true,
+        'fallback_cb'     => 'wp_page_menu',
+        'before'          => '',
+        'after'           => '',
+        'link_before'     => '',
+        'link_after'      => '',
+        'items_wrap'      => '<ul class="header-menu-list">%3$s</ul>',
+        'depth'           => 0,
+        'walker'          => ''
 		)
 	);
 }
@@ -97,6 +97,22 @@ function register_lwp_menu()
     register_nav_menus(array(
         'header-menu' => __('Header Menu', THEME_OPT),
     ));
+}
+/*-- add custom classes for menu items --*/
+add_filter( 'nav_menu_css_class', '__return_empty_array', 2, 2 );
+add_filter('nav_menu_css_class', 'custom_nav_menu_css_class', 10, 2 );
+function custom_nav_menu_css_class( $classes, $item ) {
+
+    $classes[] = 'header-menu-list-item';
+    return $classes;
+}
+/*-- add custom classes for menu links --*/
+add_filter('nav_menu_link_attributes', 'custom_nav_link_css_class', 10, 3 );
+function custom_nav_link_css_class( $atts, $item, $args ) {
+    if( $args->theme_location == 'header-menu' ) {
+        $atts['class'] = 'header-menu-list-item-link';
+    }
+    return $atts;
 }
 
 // Add page slug to body class, love this - Credit: Starkers Wordpress Theme
@@ -276,248 +292,36 @@ require_once "inc/fix_core.php";
 
 include_once 'inc/loader.php';
 
-add_action('show_services_posts','get_my_services',10,2);
-function get_my_services($category_slug, $numbers=-1)
-    {
-        $args = array(
-            'orderby' => 'date',
-            'order' => 'ASC',
-            'numberposts' => $numbers,
-            'category_name' => $category_slug,
-            'post_status' => 'publish',
-            'post_type' => array('post')
-        );
-        $posts = get_posts($args);
+add_action('posts_slider','get_posts_slider',10,2);
 
-        foreach ($posts as $post) :
+function get_posts_slider($posts_author_id = 1 , $per_page_num = -1){
 
-            setup_postdata($post);
+    $posts_obj = get_posts( array(
+        'orderby' => 'date',
+        'order' => 'DESC',
+        'per_page' => $per_page_num,
+        'post_status' => 'publish',
+        'post_type' => array('post'),
+        'post_author' => $posts_author_id
+    ));
+    ?>
+
+    <div class="blog-list slick-slider">
+        <?php if($posts_obj): foreach ($posts_obj as $post):
+            $image= get_the_post_thumbnail_url($post, 'medium');
+            $link = get_permalink($post->ID);
             $title = get_the_title($post);
-            $desc = get_the_content($post);
-            $desc = substr($desc,0,60);
-            $link =get_permalink($post->ID);
-            $image = get_the_post_thumbnail_url($post,'full');
-            $gradient=redux_post_meta(THEME_OPT,$post,'post-services-color-gradient');
-
-           ?>
-
-            <a href = '<?= $link?>' class="services-list-item" style="border-image-source: linear-gradient(42deg, <?=$gradient['from'].', '.$gradient['to']?>);">
-                <div class="services-list-item-wrap">
-                    <div class="services-list-item-img">
-                        <img src="<?= $image?>" alt="#">
-                    </div>
-                    <h4 class="services-list-item-header"><?= $title?></h4>
-<!--                    <p class="services-list-item-text">--><?//= $desc?><!--</p>-->
-                </div>
-            </a>
-
-       <?php
-        endforeach;
-        wp_reset_postdata();
-    }
-    function show_post_works_html($posts){
-        foreach ($posts as $post) :
-
-            setup_postdata($post);
-            $title = get_the_title($post);
-            $technology = redux_post_meta(THEME_OPT,$post,'post-works-technology');
-            $technology =  sanitize_text_field($technology);
-
-            if(strlen($technology)>52){
-                substr($technology,0,52);
-                 $technology .='...';
-            }
-            $link =get_permalink($post->ID);
-            $image = get_the_post_thumbnail_url($post,'full');
-            $gradient = redux_post_meta(THEME_OPT, $post,'post-works-color-gradient');
-            $type = redux_post_meta(THEME_OPT,$post,'post-works-type-select');
-
-            if(get_post_meta($post->ID, 'post-service-type') && is_array(get_post_meta($post->ID, 'post-service-type'))) {
-               $services = get_post_meta($post->ID, 'post-service-type');
-
-               if(is_array($services[0]))
-                   $services_str = implode(" " , $services[0]);
-               else
-                   $services_str = $services[0];
-            }
             ?>
 
-            <a href='<?= $link?>' class="latest_works-content-item" data-category="<?= $type?>" style="background: linear-gradient(196deg, <?=$gradient['from']?>,<?=$gradient['to']?>)" data-metavalue="<?= $services_str?>">
-                <h4 class="latest_works-content-item-header"><?= $title?></h4>
-                <p class="latest_works-content-item-text">
-                    <span class="latest_works-content-item-text-info"><?=  $technology?></span>
-
-                </p>
-
-                <div class="latest_works-content-item-img">
-                    <img class="latest_works-content-item-img-mockup" src="<?= $image?>" alt="#">
-                </div>
+            <a class="blog-page-list-item" href="<?php echo $link ?>">
+                <div class="blog-page-list-item-img" style='background-image: url(<?php echo $image ?>)'></div>
+                <div class="blog-page-list-item-info" ><?php echo $title ?></div>
             </a>
-        <?php
-        endforeach;
-    }
-add_action('show_latest_works_posts','get_my_works',10,3);
-function get_my_works($category_slug, $number_pagination=6)
-{
-    $all_posts_args=array(
-        'orderby' => 'date',
-        'order' => 'DESC',
-        'numberposts' => -1,
-        'category_name' => $category_slug,
-        'post_status' => 'publish',
-        'fields'          => 'ids',
-        'post_type' => array('post')
-    );
-    $all_post_ids=get_posts($all_posts_args);
 
-    $args = array(
-        'orderby' => 'date',
-        'order' => 'DESC',
-        'category_name' => $category_slug,
-        'post_status' => 'publish',
-        'post_type' => array('post'),
-    );
-
-    $pagination =  $number_pagination; //if set current pagination
-    $numberposts = empty($pagination)? -1: null; // if not set current pagination (show last 6 posts) for start page
-
-    $args['include']=$pagination;
-    $args['numberposts']=$numberposts;
-    $posts = get_posts($args);
-    echo '<input type="hidden" class="all-numbers-posts hidden" value="'.implode( "," ,$all_post_ids).'" data="'.get_permalink().'"/>';
-    echo '<div class="latest_works-content portfolio" id="works-content">';
-        show_post_works_html($posts);
-    echo '</div>';
-    wp_reset_postdata();
+        <?php endforeach; endif; ?>
+    </div>
+    <?php
 }
-
-add_action('show_blog_posts','get_my_blog',10,2);
-
-function get_my_three_works($category_slug, $number_posts=3)
-{
-    $args = array(
-        'orderby' => 'date',
-        'order' => 'ASC',
-        'category_name' => $category_slug,
-        'post_status' => 'publish',
-        'post_type' => array('post'),
-        'numberposts' => $number_posts
-    );
-    $posts = get_posts($args);
-    echo '<div class="latest_works-content portfolio">';
-    show_post_works_html($posts);
-    echo '</div>';
-    wp_reset_postdata();
-}
-add_action('show_my_three_works','get_my_three_works');
-
-function get_my_all_services($meta_value, $number_posts=-1)
-{
-    $args = array(
-        'orderby' => 'date',
-        'order' => 'ASC',
-        'numberposts' => $number_posts,
-        'post_status' => 'publish',
-        'category_name' => 'latest-works',
-
-        'meta_key' => 'post-service-type',
-//        'meta_value' => $meta_value,
-     //   'meta_query' => array('post-service-type' => $meta_value),
-        'post_type' => array('post')
-    );
-    $posts = get_posts($args);
-
-//    var_dump($posts);
-    echo '<div class="latest_works ">';
-    echo '<input id="meta_value" type="hidden" value="'.$meta_value.'">';
-    echo '<div class="latest_works-content portfolio">';
-    show_post_works_html($posts);
-    echo '</div>';
-    echo '</div>';
-    wp_reset_postdata();
-
-
-}
-add_action('show_my_all_works','get_my_all_services');
-
-function get_my_blog($category_slug, $number_pagination=null)
-    {
-        $all_posts_args=array(
-            'orderby' => 'date',
-            'order' => 'DESC',
-            'numberposts' => -1,
-            'category_name' => $category_slug,
-            'post_status' => 'publish',
-            'fields'          => 'ids',
-            'post_type' => array('post')
-
-        );
-        $all_post_ids=get_posts($all_posts_args);
-
-
-    $args = array(
-        'orderby' => 'date',
-        'order' => 'DESC',
-        'category_name' => $category_slug,
-        'post_status' => 'publish',
-        'post_type' => array('post'),
-    );
-
-        $pagination =  $number_pagination; //if set current pagination
-        $numberposts = empty($pagination)? -1 :$pagination; // if not set current pagination (show last 3 posts) for start page
-
-    $args['include']=$pagination;
-    $args['numberposts']=$numberposts;
-
-    $posts = get_posts($args);
-    echo '<input type="hidden" class="all-numbers-posts hidden" value="'.implode( "," ,$all_post_ids).'" data="'.get_permalink().'"/>';
-        foreach ($posts as $post) :
-
-    setup_postdata($post);
-    $title = get_the_title($post);
-
-    $content=$post->post_content;
-    $post_author_id=$post->post_author;
-    $post_author= get_the_author_meta( 'display_name' , $post_author_id );
-    $part_content= substr($content,0,230); // only 150 symbols of post content preview
-    $link =get_permalink($post->ID);
-    $post_date_string=$post->post_date; //string format in db 2018-07-25 12:31:08
-    $post_date = new DateTime($post_date_string);
-    $post_date=$post_date->format('d F Y'); // object format in June 2, 2018
-        $size= array('368','239');
-    $image=get_the_post_thumbnail_url($post, 'full');
-
-    ?>
-       <!-- Post -->
-            <article class="blog-list-item">
-                <div class="blog-list-item-img"><img class="blog-list-item-img-bg"  src="<?=$image?>" alt="article"></div>
-                <div class="blog-list-item-content">
-                    <div class="blog-list-item-content-wrap">
-                        <div class="blog-list-item-content-header"><?=$post_date?></div>
-                        <div class="blog-list-item-content-body">
-                            <h4 class="blog-list-item-content-body-head"><?=$title?> </h4>
-                            <p class="blog-list-item-content-body-text"><?=$part_content?></p>
-                        </div>
-                        <div class="blog-list-item-content-footer">
-                            <a href='<?=$link?>' class="content-button">Read</a>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        <!-- Post -->
-<?php
-endforeach;
-?>
- <div class="pagination">
-                <ul>
-
-                </ul>
-            </div>
-<?php
-wp_reset_postdata(); // reset
-}
-
-
 
 remove_action('wp_head', 'wp_generator');
 

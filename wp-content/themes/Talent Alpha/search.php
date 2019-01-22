@@ -1,10 +1,3 @@
-<?php get_header(); ?>
-<?php
-/*
- * Template Name:Blog
- *
- */
-?>
 <?php get_header();
 global $mytheme, $post;
 $posts_teams = get_posts( array(
@@ -24,22 +17,21 @@ $posts_teams = get_posts( array(
 <section class="blog-page">
     <div class="wrap-section">
         <div class="blog-serch-rezult">
-            <span class="blog-serch-rezult-text"><?php  _e( 'Search Results for ', THEME_OPT ); echo get_search_query(); ?></span>
+            <span class="blog-serch-rezult-text"><?php  _e( 'Search Results for ', THEME_OPT ); echo '"'.get_search_query().'"'; ?></span>
             <a href="/blog" class="blog-serch-rezult-btn">Clear search</a>
         </div>
         <div class="blog-page-list ">
             <?php if (have_posts()): while (have_posts()) : the_post(); ?>
 
-                <div class="blog-page-list-item">
+                <a class="blog-page-list-item" href="<?php the_permalink(); ?>">
                     <div class="blog-page-list-item-img" style='background-image: url(<?php the_post_thumbnail_url('medium') ?>)'></div>
-                    <a class="blog-page-list-item-info" href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-                </div>
-
-            <? endwhile;
+                    <div class="blog-page-list-item-info" ><?php the_title(); ?></div>
+                </a>
+            <?php endwhile;
             else:?>
                 <article>
 
-                    <h2><?php _e( 'Sorry, nothing to display.', 'teatrhotel' ); ?></h2>
+                    <h2><?php _e( 'Sorry, nothing to display.', THEME_OPT ); ?></h2>
 
                 </article>
             <?php endif; ?>

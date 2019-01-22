@@ -7,11 +7,11 @@
 <?php get_header();
 global $mytheme, $post;
 $posts_teams = get_posts( array(
-        'orderby' => 'date',
-        'order' => 'DESC',
-        'numberposts' => -1,
-        'post_status' => 'publish',
-        'post_type' => array('post'),
+    'orderby' => 'date',
+    'order' => 'DESC',
+    'numberposts' => -1,
+    'post_status' => 'publish',
+    'post_type' => array('post'),
 ));
 //$posts_latest_works = new WP_Query( array( 'category_name' => 'latest-works' ,'post_status' => 'published') );
 //first section variable
@@ -95,27 +95,27 @@ $advisorsList = redux_post_meta(THEME_OPT, $post->ID, 'advisors-repeater-items')
 ?>
 <div class="wrapper">
     <section class="banner ">
-        <h1><?= $head ?></h1>
-        <p class='banner-content'><?= $secondString; ?></p>
+        <h1><?php echo $head ?></h1>
+        <p class='banner-content'><?php echo $secondString; ?></p>
         <div class='banner-bottom'>
-            <span class='banner-bottom-text'>Join as Early Adopter:</span>
+            <span class='banner-bottom-text'>Join as an Early Adopter:</span>
             <div class='banner-bottom-btns'>
-                <div class="content-button"><a href="<?= $leftButtonLink ?>" class="content-button-link"><?= $leftButton ?></a></div>
-                <div class="content-button"><a href="<?= $rightButtonLink ?>" class="content-button-link"><?= $rightButton ?></a></div>
+                <div class="content-button main-banner-btn"><a href="<?php echo $leftButtonLink; ?>" class="content-button-link"><?php echo $leftButton; ?></a></div>
+                <div class="content-button main-banner-btn"><a href="<?php echo $rightButtonLink; ?>" class="content-button-link"><?php echo $rightButton; ?></a></div>
             </div>
         </div>
     </section>
 </div>
-<div class="vision-about" id="vision">
-    <div class="wrap-section">
+<div class="vision-about">
+    <div class="wrap-section" id="vision">
         <div class="vision-about-info">
-            <h2><?= $secondHead ?></h2>
-            <?= $secondSectionString ?>
-            <a href="<?= $secondScheduleLink ?>" class="content-button">Schedule a call </a>
+            <h2><?php echo $secondHead; ?></h2>
+            <?php echo $secondSectionString; ?>
+            <a href="<?php echo $secondScheduleLink; ?>" class="content-button">Schedule a call </a>
         </div>
         <div class="vision-about-img">
-            <img src="<?= get_template_directory_uri().'/inc/urich/img/vision.png' ?>" alt="#" class='vision-about-img-photo'>
-            <img src="<?= get_template_directory_uri().'/inc/urich/img/ta_logo.png' ?>" alt="#" class='vision-about-img-logo'>
+            <img src="<?php echo get_template_directory_uri().'/inc/urich/img/vision.png'; ?>" alt="#" class='vision-about-img-photo'>
+            <img src="<?php echo get_template_directory_uri().'/inc/urich/img/ta_logo.png'; ?>" alt="#" class='vision-about-img-logo'>
         </div>
     </div>
 </div>
@@ -124,56 +124,56 @@ $advisorsList = redux_post_meta(THEME_OPT, $post->ID, 'advisors-repeater-items')
         <div class="vision-steps">
             <div class="vision-steps-item">
                 <div class="vision-steps-item-img">
-                    <img src="<?= $firstImage['url'] ?>" class="vision-steps-item-img-step1">
+                    <img src="<?php echo $firstImage['url']; ?>" class="vision-steps-item-img-step1">
                 </div>
                 <div class="vision-steps-item-content">
                     <div class="vision-steps-item-content-num">1</div>
                     <div class="vision-steps-item-content-info">
-                        <h3 class="vision-steps-item-content-info-header"><?= $firstName ?></h3>
-                        <p class="vision-steps-item-content-info-text"><?= $firstDecription ?></p>
+                        <h3 class="vision-steps-item-content-info-header"><?php echo $firstName; ?></h3>
+                        <p class="vision-steps-item-content-info-text"><?php echo $firstDecription; ?></p>
                     </div>
                 </div>
             </div>
             <div class="vision-steps-item">
                 <div class="vision-steps-item-img">
-                    <img src="<?= $secondImage1['url'] ?>" class="vision-steps-item-img-step1">
-                    <img src="<?= $secondImage2['url'] ?>" class="vision-steps-item-img-step2">
+                    <img src="<?php echo $secondImage1['url']; ?>" class="vision-steps-item-img-step1">
+                    <img src="<?php echo $secondImage2['url']; ?>" class="vision-steps-item-img-step2">
                 </div>
                 <div class="vision-steps-item-content">
                     <div class="vision-steps-item-content-num">2</div>
                     <div class="vision-steps-item-content-info">
-                        <h3 class="vision-steps-item-content-info-header"><?= $secondName ?></h3>
-                        <p class="vision-steps-item-content-info-text"><?= $secondDecription ?></p>
+                        <h3 class="vision-steps-item-content-info-header"><?php echo $secondName; ?></h3>
+                        <p class="vision-steps-item-content-info-text"><?php echo $secondDecription; ?></p>
                     </div>
                 </div>
             </div>
             <div class="vision-steps-item">
                 <div class="vision-steps-item-img">
                     <div class="vision-steps-item-img-step-ellipse"></div>
-                    <img src="<?= $thirdImage1['url'] ?>" class="vision-steps-item-img-3a">
-                    <img src="<?= $thirdImage2['url'] ?>" class="vision-steps-item-img-3b">
+                    <img src="<?php echo $thirdImage1['url']; ?>" class="vision-steps-item-img-3a">
+                    <img src="<?php echo $thirdImage2['url']; ?>" class="vision-steps-item-img-3b">
                 </div>
                 <div class="vision-steps-item-content">
                     <div class="vision-steps-item-content-num">3</div>
                     <div class="vision-steps-item-content-info">
-                        <h3 class="vision-steps-item-content-info-header"><?= $thirdName ?></h3>
-                        <p class="vision-steps-item-content-info-text"><?= $thirdDecription ?></p>
+                        <h3 class="vision-steps-item-content-info-header"><?php echo $thirdName; ?></h3>
+                        <p class="vision-steps-item-content-info-text"><?php echo $thirdDecription; ?></p>
                     </div>
                 </div>
             </div>
             <div class="vision-steps-item">
                 <div class="vision-steps-item-img">
                     <div class="vision-steps-item-img-step-ellipse"></div>
-                    <img src="<?= $fourImage1['url'] ?>" class="vision-steps-item-img-4a">
-                    <img src="<?= $fourImage2['url'] ?>" class="vision-steps-item-img-4b">
-                    <img src="<?= $fourImage3['url'] ?>" class="vision-steps-item-img-4c">
+                    <img src="<?php echo $fourImage1['url']; ?>" class="vision-steps-item-img-4a">
+                    <img src="<?php echo $fourImage2['url']; ?>" class="vision-steps-item-img-4b">
+                    <img src="<?php echo $fourImage3['url']; ?>" class="vision-steps-item-img-4c">
                 </div>
                 <div class="vision-steps-item-content">
                     <div class="vision-steps-item-content-num">4</div>
                     <div class="vision-steps-item-content-info">
-                        <h3 class="vision-steps-item-content-info-header"><?= $fourName ?></h3>
-                        <p class="vision-steps-item-content-info-text"><?= $fourDecription?></p>
-                        <a href="<?= $fourLink ?>" class="content-button">Schedule a call </a>
+                        <h3 class="vision-steps-item-content-info-header"><?php echo $fourName; ?></h3>
+                        <p class="vision-steps-item-content-info-text"><?php echo $fourDecription?></p>
+                        <a href="<?php echo $fourLink; ?>" class="content-button">Schedule a call </a>
                     </div>
                 </div>
             </div>
@@ -181,133 +181,143 @@ $advisorsList = redux_post_meta(THEME_OPT, $post->ID, 'advisors-repeater-items')
         </div>
     </section>
     <section class="info">
-        <h1>Why we are doing this</h1>
+        <h1>Why we are doing this?</h1>
         <div class="info-list">
-            <? if($fourSectionRepeater): foreach ($fourSectionRepeater as $block): ?>
-            <a class="info-list-item" href="<?= $block['info-list-item-link'] ?>">
-                <div class='info-list-item-wrap'>
-                    <div class="info-list-item-img"></div>
-                    <h4 class='info-list-item-header'><?= $block['info-list-item-header'] ?> </h4>
-                    <p class='info-list-item-text'><?= $block['info-list-item-text'] ?></p>
-                </div>
-            </a>
-            <? endforeach; endif; ?>
+            <?php if($fourSectionRepeater){ 
+					foreach ($fourSectionRepeater as $block){ ?>
+                <a class="info-list-item" href="<?php echo $block['info-list-item-link']; ?>">
+                    <div class='info-list-item-wrap'>
+                        <div class="info-list-item-img"></div>
+                        <h4 class='info-list-item-header'><?php echo $block['info-list-item-header']; ?> </h4>
+                        <p class='info-list-item-text'><?php echo $block['info-list-item-text']; ?></p>
+                    </div>
+                </a>
+			<?php }
+					}
+			?>
         </div>
     </section>
 </div>
 <div class="wrap-section">
     <section class="early_adopters">
-        <h2><?= $fiveHead ?></h2>
+        <h2><?php echo $fiveHead; ?></h2>
         <div class="early_adopters-list">
             <div class="early_adopters-list-item">
-                <img src="<?= get_template_directory_uri().'/inc/urich/img/pero-hover.svg' ?>" alt="#">
-                <h4 class="early_adopters-list-item-header"><?= $fiveHeadRight?></h4>
+                <img src="<?php echo get_template_directory_uri().'/inc/urich/img/pero-hover.svg'; ?>" alt="#">
+                <h4 class="early_adopters-list-item-header"><?php echo $fiveHeadLeft; ?></h4>
                 <ul class="early_adopters-list-item-content">
-                    <? if (is_array($fivelistRight)): foreach ($fivelistRight as $item): ?>
-                    <li class="early_adopters-list-item-content-text">
-                        <p class="early_adopters-list-item-content-text-par"><?= $item ?></p>
-                    </li>
-                    <? endforeach; endif; ?>
+                    <?php if (is_array($fivelistLeft)){
+						foreach ($fivelistLeft as $item){ ?>
+                        <li class="early_adopters-list-item-content-text">
+                            <p class="early_adopters-list-item-content-text-par"><?php echo $item; ?></p>
+                        </li>
+					<?php }}?>
                 </ul>
-                <a href="<?= $fivebuttonLinkLeft ?>" class="content-button"><?= $fivebuttonTextLeft ?></a>
+                <a href="<?php echo $fivebuttonLinkLeft; ?>" class="content-button"><?php echo $fivebuttonTextLeft; ?></a>
             </div>
             <div class="early_adopters-list-item">
-                <img src="<?= get_template_directory_uri().'/inc/urich/img/pero-hover.svg' ?>" alt="#">
-                <h4 class="early_adopters-list-item-header"><?= $fiveHeadRight ?></h4>
+                <img src="<?php echo get_template_directory_uri().'/inc/urich/img/pero-hover.svg'; ?>" alt="#">
+                <h4 class="early_adopters-list-item-header"><?php echo $fiveHeadRight; ?></h4>
                 <ul class="early_adopters-list-item-content">
-                    <? if (is_array($fivelistRight)): foreach ($fivelistRight as $item): ?>
+                    <?php if (is_array($fivelistRight)){ foreach ($fivelistRight as $item){ ?>
                         <li class="early_adopters-list-item-content-text">
-                            <p class="early_adopters-list-item-content-text-par"><?= $item ?></p>
+                            <p class="early_adopters-list-item-content-text-par"><?php echo $item; ?></p>
                         </li>
-                    <? endforeach; endif; ?>
+                    <?php }} ?>
                 </ul>
-                <a href="<?= $fivebuttonLinkRight ?>" class="content-button"><?= $fivebuttonTextRight ?></a>
+                <a href="<?php echo $fivebuttonLinkRight; ?>" class="content-button"><?php echo $fivebuttonTextRight; ?></a>
             </div>
         </div>
     </section>
     <section class="team" id="team">
-        <h2><?= $sixthHead ?></h2>
+        <h2><?php echo $sixthHead; ?></h2>
         <h5 class="team-header">FOUNDERS</h5>
         <div class="team-founders">
             <div class="team-founders-item">
-                <h3 class="team-founders-item-name"><?= $founderFirstName ?></h3>
+                <h3 class="team-founders-item-name"><?php echo $founderFirstName; ?></h3>
                 <div class="team-founders-item-img">
-                    <img src="<?= $founderFirstPhoto['url'] ?>" alt="" class="team-founders-item-img-photo">
-                    <a href='<?= $founderFirstLink ?>' class="team-founders-item-link"><img src="<?= get_template_directory_uri().'/inc/urich/img/plus.png' ?>" alt="" class="team-founders-item-plus"></a>
+                    <img src="<?php echo $founderFirstPhoto['url']; ?>" alt="" class="team-founders-item-img-photo">
+                    <a href='<?php echo $founderFirstLink; ?>' class="team-founders-item-link"><img src="<?php echo get_template_directory_uri().'/inc/urich/img/plus.png'; ?>" alt="" class="team-founders-item-plus"></a>
                 </div>
 
             </div>
             <div class="team-founders-item">
-                <h3 class="team-founders-item-name"><?= $founderSecondName ?></h3>
+                <h3 class="team-founders-item-name"><?php echo $founderSecondName; ?></h3>
                 <div class="team-founders-item-img">
-                    <img src="<?= $founderSecondPhoto['url'] ?>" alt="" class="team-founders-item-img-photo">
-                    <a href='<?= $founderSecondLink ?>' class="team-founders-item-link"><img src="<?= get_template_directory_uri().'/inc/urich/img/plus.png' ?>" alt="" class="team-founders-item-plus"></a>
+                    <img src="<?php echo $founderSecondPhoto['url']; ?>" alt="" class="team-founders-item-img-photo">
+                    <a href='<?php echo $founderSecondLink; ?>' class="team-founders-item-link"><img src="<?php echo get_template_directory_uri().'/inc/urich/img/plus.png'; ?>" alt="" class="team-founders-item-plus"></a>
                 </div>
 
             </div>
             <div class="team-founders-item">
-                <h3 class="team-founders-item-name"><?= $founderThirdName ?></h3>
+                <h3 class="team-founders-item-name"><?php echo $founderThirdName; ?></h3>
                 <div class="team-founders-item-img">
-                    <img src="<?= $founderThirdPhoto['url'] ?>" alt="" class="team-founders-item-img-photo">
-                    <a href='<?= $founderThirdLink ?>' class="team-founders-item-link"><img src="<?= get_template_directory_uri().'/inc/urich/img/plus.png' ?>" alt="" class="team-founders-item-plus"></a>
+                    <img src="<?php echo $founderThirdPhoto['url']; ?>" alt="" class="team-founders-item-img-photo">
+                    <a href='<?php echo $founderThirdLink; ?>' class="team-founders-item-link"><img src="<?php echo get_template_directory_uri().'/inc/urich/img/plus.png'; ?>" alt="" class="team-founders-item-plus"></a>
                 </div>
             </div>
         </div>
         <div class='team-content'>
             <div class='team-content-item'>
-                <h5 class="team-header"><?= $platformTeamHeadText ?></h5>
+                <h5 class="team-header"><?php echo $platformTeamHeadText; ?></h5>
                 <div class='team-content-item-about'>
-                    <? if ($platformTeamList): foreach ($platformTeamList as $item): ?>
-                    <div class='team-content-item-about-block'>
-                        <a href="<?= $item['team-item-link'] ?>">
-                        <div class='team-content-item-about-block-photo'></div><span class='team-content-item-about-block-name'><?= $item['team-item-name'] ?></span>
-                        </a>
-                    </div>
-                    <? endforeach; endif; ?>
+                    <?php if ($platformTeamList): foreach ($platformTeamList as $item): ?>
+                        <div class='team-content-item-about-block'>
+                            <a href="<?= $item['team-item-link'] ?>">
+                                <div class='team-content-item-about-block-photo'><img src="<?= $item['team-item-img']['url']?>"> </div><span class='team-content-item-about-block-name'><?= $item['team-item-name'] ?></span>
+                            </a>
+                        </div>
+                    <?php endforeach; endif; ?>
                 </div>
             </div>
             <div class='team-content-item'>
-                <h5 class="team-header"><?= $advisorsHeadText ?></h5>
+                <h5 class="team-header"><?php echo $advisorsHeadText; ?></h5>
                 <div class='team-content-item-about'>
-                    <? if ($advisorsList): foreach ($advisorsList as $item): ?>
-                    <div class='team-content-item-about-block'>
-                    <a href="<?= $item['advisors-item-link'] ?>">
-                        <div class='team-content-item-about-block-photo'></div><span class='team-content-item-about-block-name'><?= $item['advisors-item-name'] ?></span>
-                    </a>
-                    </div>
-                    <? endforeach; endif; ?>
+                    <?php  if ($advisorsList): foreach ($advisorsList as $item): ?>
+                        <div class='team-content-item-about-block'>
+                            <a href="<?= $item['advisors-item-link'] ?>">
+                                <div class='team-content-item-about-block-photo'><img src="<?= $item['advisors-item-img']['url'] ?>"></div><span class='team-content-item-about-block-name'><?= $item['advisors-item-name'] ?></span>
+                            </a>
+                        </div>
+                    <?php endforeach; endif; ?>
                 </div>
             </div>
         </div>
     </section>
 </div>
+<?php
+/*
 <section class="blog" id ='blog'>
     <div class="wrap-section">
         <div class='blog-header'>
             <h2>Blog</h2>
             <div>
-                <button type="button" class="prev"><img src="<?= get_template_directory_uri().'/inc/urich/img/Vector.svg' ?>" alt=""> </button>
-                <button type="button" class="next"><img src="<?= get_template_directory_uri().'/inc/urich/img/Vector.svg' ?>" alt=""> </button>
+                <button type="button" class="prev"><img src="<?php echo get_template_directory_uri().'/inc/urich/img/Vector.svg'; ?>" alt=""> </button>
+                <button type="button" class="next"><img src="<?php echo get_template_directory_uri().'/inc/urich/img/Vector.svg'; ?>" alt=""> </button>
             </div>
         </div>
         <div class="blog-list slick-slider">
-            <? if($posts_teams): foreach ($posts_teams as $post):
+            <?php if($posts_teams){ foreach ($posts_teams as $post){
                 $image= get_the_post_thumbnail_url($post, 'medium');
                 $link = get_permalink($post->ID);
                 $title = get_the_title($post);
-
+                $link =get_permalink($post->ID);
                 ?>
 
-                    <div class="blog-list-item">
-                        <a href='<?=$link?>' "><img class="blog-list-item-img" src="<?= $image ?>" alt=""></a>
-                        <div class="blog-list-item-info"><span><?= $title ?></span></div>
-                    </div>
+                <div class="blog-list-item">
+                    <a href='<?php echo $link; ?>' ><img class="blog-list-item-img" src="<?php echo $image; ?>" alt=""></a>
+                    <div class="blog-list-item-info"><span><?php echo $title; ?></span></div>
+                </div>
 
-            <? endforeach; endif; ?>
+            <?php }} ?>
         </div>
 
     </div>
 </section>
-        <div class="wrap-section">
-            <? get_footer(); ?>
+*/
+?>
+<section class="blog" id ='blog'>
+<div class="wrap-section">
+    <?php echo get_footer(); ?>
+</section>
 
