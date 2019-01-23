@@ -91,7 +91,6 @@ if ( ! class_exists( 'Redux_Framework_Lwp_config' ) ) {
                     'id' =>'linkedId-text',
                     'type' => 'text',
                     'title' => __('LinkedId URL', THEME_OPT)
-
                 )
 
 			);
@@ -127,6 +126,31 @@ if ( ! class_exists( 'Redux_Framework_Lwp_config' ) ) {
                     'title'    => __('URL Schedule a call', THEME_OPT),
                 ),
             );
+            $general_fields = array(
+                array(
+                    'title' => __('LinkeId', THEME_OPT),
+                    'type' => 'text',
+                    'validate' => 'url',
+                    'placeholder' => 'LinkeId URL',
+                    'id' =>'linkeid-link'
+                ),
+                array(
+                    'title' => __('Facebook URL', THEME_OPT),
+                    'type' => 'text',
+                    'validate' => 'url',
+                    'placeholder' => 'Facebook URL',
+                    'id' =>'facebook-link'
+                ),
+                array(
+                    'title' => __('Twitter URL', THEME_OPT),
+                    'type' => 'text',
+                    'validate' => 'url',
+                    'placeholder' => 'Twitter URL',
+                    'id' =>'twitter-link'
+                ),
+
+
+            );
             /* Set sections */
             $this->sections[] = array(
                 'title'  => __( 'Header', THEME_OPT ),
@@ -137,6 +161,11 @@ if ( ! class_exists( 'Redux_Framework_Lwp_config' ) ) {
                 'title'  => __( 'Footer', THEME_OPT ),
                 'icon'   => 'el-icon-cog',
                 'fields' => $footer_fields
+            );
+            $this->sections[] = array(
+                'title'  => __( 'Settings', THEME_OPT ),
+                'icon'   => 'el-icon-cog',
+                'fields' => $general_fields
             );
 
 

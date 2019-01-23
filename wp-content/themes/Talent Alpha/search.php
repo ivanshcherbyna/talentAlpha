@@ -10,7 +10,7 @@ $posts_teams = get_posts( array(
 ?>
 <div class="wrapper">
     <section class="banner banner-blog">
-        <h1>Blog</h1>
+        <h1 class = "header">Blog</h1>
         <?php echo get_search_form() ?>
     </section>
 </div>
@@ -34,14 +34,14 @@ $posts_teams = get_posts( array(
             <?php else:?>
                 <article>
 
-                    <h2><?php _e( 'Sorry, nothing to display.', THEME_OPT ); ?></h2>
+                    <h2 class="header"><?php _e( 'Sorry, nothing to display.', THEME_OPT ); ?></h2>
 
                 </article>
             <?php endif; ?>
         </div>
-
+        <hr class="page-line">
     </div>
-    <hr class="page-line">
+
 </section>
 
 <div class="wrap-section">

@@ -12117,9 +12117,11 @@
 				
 				// vars
 				var editor = data.editor;
-				
-				// bail early if not 'acf'
-				if( editor.id.substr(0, 3) !== 'acf' ) return;
+				if(typeof editor.id === "string") {
+                    // bail early if not 'acf'
+                    if (editor.id.substr(0, 3) !== 'acf') return;
+
+                }
 				
 				// override if 'content' exists
 				editor = tinymce.editors.content || editor;

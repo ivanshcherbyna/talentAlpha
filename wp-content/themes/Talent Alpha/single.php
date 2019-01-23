@@ -1,5 +1,5 @@
 <?php get_header();
-global $post;
+global $post, $mytheme;
 $image=get_the_post_thumbnail_url($post,'full');
 $post_author_id = $post->post_author;
 $post_author = get_the_author_meta( 'display_name' , $post_author_id );
@@ -8,9 +8,9 @@ $post_date = new DateTime($post_date_string);
 $post_date = $post_date->format('d F Y');
 
 $author_image = get_field( 'photo','user_'.$post_author_id );
-$author_linkeid = get_field( 'linkeid','user_'.$post_author_id );
-$author_facebook = get_field( 'facebook','user_'.$post_author_id );
-$author_twitter = get_field( 'twitter','user_'.$post_author_id );
+$author_linkeid = $mytheme['linkeid-link'];
+$author_facebook = $mytheme['facebook-link'];
+$author_twitter = $mytheme['twitter-link'];
 
 $author_link = get_author_posts_url($post_author_id);
 
@@ -64,10 +64,10 @@ $author_link = get_author_posts_url($post_author_id);
     <!-- /section -->
 </section>
 
-<section class="blog" id ='blog'>
+<section class="blog-main">
     <div class="wrap-section">
-        <div class='header'>
-            <h2><?php _e('Read also', THEME_OPT) ?></h2>
+        <div class='blog-header'>
+            <h2 class="header"><?php _e('Read also', THEME_OPT) ?>
         </div>
 
         <?php do_action('posts_slider', $post_author_id); ?>

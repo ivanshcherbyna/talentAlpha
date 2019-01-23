@@ -16,7 +16,7 @@ $posts_teams = get_posts( array(
 ?>
 <div class="wrapper">
     <section class="banner banner-blog">
-        <h1><?php the_title() ?></h1>
+        <h1 class = "header"><?php the_title() ?></h1>
         <?php echo get_search_form() ?>
     </section>
 </div>
@@ -39,8 +39,8 @@ $posts_teams = get_posts( array(
             <div class="blog-page-list-item empty-block"></div>
             <div class="blog-page-list-item empty-block"></div>
         </div>
+        <hr class="page-line">
     </div>
-    <hr class="page-line">
 </section>
 
 

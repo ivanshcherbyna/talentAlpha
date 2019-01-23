@@ -198,8 +198,8 @@ $advisorsList = redux_post_meta(THEME_OPT, $post->ID, 'advisors-repeater-items')
         </div>
     </section>
 </div>
-<div class="wrap-section">
-    <section class="early_adopters">
+<section class="early_adopters">
+    <div class="wrap-section">
         <h2 class = "header"><?php echo $fiveHead; ?></h2>
         <div class="early_adopters-list">
             <div class="early_adopters-list-item">
@@ -228,7 +228,9 @@ $advisorsList = redux_post_meta(THEME_OPT, $post->ID, 'advisors-repeater-items')
                 <a href="<?php echo $fivebuttonLinkRight; ?>" class="content-button"><?php echo $fivebuttonTextRight; ?></a>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+<div class="wrap-section">
     <section class="team" id="team">
         <h2 class = "header"><?php echo $sixthHead; ?></h2>
         <h5 class="team-header">FOUNDERS</h5>
@@ -285,9 +287,10 @@ $advisorsList = redux_post_meta(THEME_OPT, $post->ID, 'advisors-repeater-items')
         </div>
     </section>
 </div>
+
 <?php
 /*
-<section class="blog" id ='blog'>
+<section class="blog-main" id ='blog'>
     <div class="wrap-section">
         <div class='blog-header'>
             <h2>Blog</h2>
@@ -316,7 +319,7 @@ $advisorsList = redux_post_meta(THEME_OPT, $post->ID, 'advisors-repeater-items')
 </section>
 */
 ?>
-<section class="blog" id ='blog'>
+<section class="blog-main" id ='blog'>
 <div class="wrap-section">
     <?php echo get_footer(); ?>
 </section>
